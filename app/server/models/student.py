@@ -40,7 +40,7 @@ class UpdateStudentModel(BaseModel):
         }
 
 
-def response_model(data, message):
+def response_model(code, message,data):
     return {
         "code": 200,
         "message": message,

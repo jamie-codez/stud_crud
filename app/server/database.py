@@ -20,19 +20,26 @@ def student_helper(student) -> dict:
     }
 
 
+# Add new student to the database
+async def add_student(student_data: dict) -> dict:
+    student = await students_collection.insert_one(student_data)
+    new_student = await students_collection.find_one({"_id": student.inserted_id})
+    return student_helper(new_student)
+
+
+# Retrieve student
+async def retrieve_student(doc_id: str) -> dict:
+    student = students_collection.find_one({"_id", ObjectId(doc_id)})
+    if student:
+        return student_helper(student)
+
+
 # Retrieve all students
 async def retrieve_students():
     students = []
     async for student in students_collection.find():
         students.append(student)
     return students
-
-
-# Add new student to the database
-async def add_student(student_data: dict) -> dict:
-    student = await students_collection.insert_one(student_data)
-    new_student = await students_collection.find_one({"_id": student.inserted_id})
-    return student_helper(new_student)
 
 
 # Update Student
