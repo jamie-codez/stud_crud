@@ -1,8 +1,9 @@
+import os
+
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 
-CON_STRING = "mongodb://localhost:27017"
-client = motor.motor_asyncio.AsyncIOMotorClient(CON_STRING)
+client = motor.motor_asyncio.AsyncIOMotorClient(os.environ["MONGO_CON_STRING"])
 database = client.students
 students_collection = database.get_collection("students")
 
