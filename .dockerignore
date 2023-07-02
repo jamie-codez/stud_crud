@@ -1,0 +1,6 @@
+bin/*
+.idea/*
+lib/*
+Dockerfile
+.dockerignore
+pyvenv.cfg

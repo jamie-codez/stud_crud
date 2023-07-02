@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from app.server.routes.students import students as StudentsRouter
+from .routes.student_routes import student
 
 app = FastAPI()
-app.include_router(StudentsRouter,tags=["Students"],prefix="/student")
+# app.include_router(student, tags=["Students"], prefix="/student")
 
 
 @app.get("/", tags=["Root route"], response_description="Returns greeting message")
