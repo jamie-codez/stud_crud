@@ -46,4 +46,4 @@ async def delete_student_data(doc_id: str) -> dict:
     if deleted_student:
         return response_model(200, "Student with id :{} deleted successfully".format(doc_id),
                               "Data deleted successfully")
-    return error_response_model(500, "Error deleting student with id: {}".format(doc_id))
+    return error_response_model(500, "Error deleting student with id: {}".format(doc_id), "Error deleting")
