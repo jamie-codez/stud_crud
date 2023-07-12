@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body
 from fastapi.encoders import jsonable_encoder
-from app.server.database import (add_student, retrieve_students, retrieve_student, update_student, delete_student)
-from app.server.models.student import (StudentSchema, UpdateStudentModel, response_model, error_response_model)
+from server.app.database import (add_student, retrieve_students, retrieve_student, update_student, delete_student)
+from server.app.models.student import (StudentSchema, UpdateStudentModel, response_model, error_response_model)
 
 student = APIRouter()
 
@@ -46,4 +46,4 @@ async def delete_student_data(doc_id: str) -> dict:
     if deleted_student:
         return response_model(200, "Student with id :{} deleted successfully".format(doc_id),
                               "Data deleted successfully")
-    return error_response_model(500, "Error deleting student with id: {}".format(doc_id))
+    return error_response_model(500, "Error deleting student with id: {}".format(doc_id), "Error deleting")

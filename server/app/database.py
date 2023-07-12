@@ -33,6 +33,7 @@ async def retrieve_student(doc_id: str) -> dict:
     student = students_collection.find_one({"_id", ObjectId(doc_id)})
     if student:
         return student_helper(student)
+    return {"message": "Error retrieving students"}
 
 
 # Retrieve all students
@@ -62,3 +63,4 @@ async def delete_student(doc_id: str) -> bool:
     if student:
         await students_collection.delete_one({"_id": ObjectId(doc_id)})
         return True
+    return False

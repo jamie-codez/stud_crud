@@ -1,5 +1,6 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr, Field
+from pydantic.fields import Field
+from pydantic import BaseModel, EmailStr
 
 
 class StudentSchema(BaseModel):
