@@ -1,13 +1,14 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr, Field
+from pydantic.fields import Field as Fiel
+from pydantic import BaseModel, EmailStr
 
 
 class StudentSchema(BaseModel):
-    username: str = Field(...)
-    email: EmailStr = Field(...)
-    course_of_study: str = Field(...)
-    year: int = Field(..., gt=0, lt=9)
-    gpa: float = Field(..., le=4.0)
+    username: str = Fiel(...)
+    email: EmailStr = Fiel(...)
+    course_of_study: str = Fiel(...)
+    year: int = Fiel(..., gt=0, lt=9)
+    gpa: float = Fiel(..., le=4.0)
 
     class Config:
         schema_extra = {
